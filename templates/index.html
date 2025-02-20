@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VisualAML - Anti-Money Laundering Anomaly Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><center>AutoASD</center></h1>
+        </header>
+        
+        <div class="main-content">
+            <div class="upload-section">
+                <h2>Data Upload</h2>
+                <div class="upload-area" id="dropZone">
+                    <input type="file" id="fileInput" accept=".csv,.json" hidden>
+                    <div class="upload-content">
+                        <div class="upload-text" id="defaultUploadText">
+                            <p>Click or Drag Files Here</p>
+                            <p class="sub-text">Supports CSV, JSON formats</p>
+                        </div>
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <p class="file-name"></p>
+                            <p class="file-size"></p>
+                            <button class="delete-btn" id="deleteFile">&times;</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="uploadBtn" class="primary-btn">Upload and Analysis</button>
+                <div class="function-description">
+                    <p>This tool provides automated anomaly subgraph detection for anti-money laundering. 
+                    It integrates three detection models: RADIO, AntiBenford, and CLARE, 
+                    offering comprehensive analysis of transaction networks.</p>
+                </div>
+                
+                 <div class="ground-truth-section">
+                    <h2>Ground Truth</h2>
+                    <div id="groundTruthVisualization" class="ground-truth-area">
+                        <img src="{{ url_for('static', filename='pic/ground_truth.png') }}" class="graph-img">
+                        <div class="metrics">
+                            <table class="metrics-table">
+                                <tr>
+                                    <td>ψ(S)</td>
+                                    <td>397.7</td>
+                                </tr>
+                                <tr>
+                                    <td>ρ</td>
+                                    <td>38.0</td>
+                                </tr>
+                                <tr>
+                                    <td>dₐ(S)</td>
+                                    <td>10.47</td>
+                                </tr>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="detection-section">
+                <div class="ratio-section">
+                    <h2>RADIO</h2>
+                    <div id="ratioVisualization" class="visualization-area">
+                        <img src="{{ url_for('static', filename='pic/ratio_graph.png') }}" class="graph-img">
+                        <div class="metrics">
+                            <table class="metrics-table">
+                                <tr>
+                                    <td>ψ(S)</td>
+                                    <td>397.4</td>
+                                </tr>
+                                <tr>
+                                    <td>ρ</td>
+                                    <td>38.63</td>
+                                </tr>
+                                <tr>
+                                    <td>dₐ(S)</td>
+                                    <td>10.29</td>
+                                </tr>
+                                <tr>
+                                    <td>overlapping</td>
+                                    <td>61.9%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ratio-metrics">
+                    </div>
+                </div>
+                <div class="other-models-section">
+                    <div class="antibenford-section">
+                        <h2>AntiBenford</h2>
+                        <div id="antibenfordVisualization" class="visualization-area">
+                            <img src="{{ url_for('static', filename='pic/antibenford_graph.png') }}" class="graph-img">
+                            <div class="metrics">
+                                <table class="metrics-table">
+                                    <tr>
+                                        <td>ψ(S)</td>
+                                        <td>23.74</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ρ</td>
+                                        <td>12.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dₐ(S)</td>
+                                        <td>1.97</td>
+                                    </tr>
+                                    <tr>
+                                        <td>overlapping</td>
+                                        <td>22.0%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clare-section">
+                        <h2>CLARE</h2>
+                        <div id="clareVisualization" class="visualization-area">
+                            <img src="{{ url_for('static', filename='pic/clare_graph.png') }}" class="graph-img">
+                            <div class="metrics">
+                                <table class="metrics-table">
+                                    <tr>
+                                        <td>ψ(S)</td>
+                                        <td>7.97</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ρ</td>
+                                        <td>8.63</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dₐ(S)</td>
+                                        <td>0.96</td>
+                                    </tr>
+                                    <tr>
+                                        <td>overlapping</td>
+                                        <td>22.2%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 添加模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

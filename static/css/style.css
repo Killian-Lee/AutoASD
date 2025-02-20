@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Latin+Modern+Math&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* 设置字体 */
+    background-color: #f5f5f5;    /* 设置背景颜色 */
+}
+
+.container {
+    max-width: 1500px;    /* 设置最大宽度 */ 
+    margin: 0 auto;       /* 设置自动居中 */
+    padding: 10px;        /* 四周留有10px内边距 */
+}
+
+header {
+    background-color: #1a237e;   /* 设置背景颜色 */ 
+    color: white;                /* 设置字体颜色 */
+    padding: 10px;              /* 四周留有10px内边距 */
+    border-radius: 8px;         /* 设置圆角 */
+    margin-bottom: 15px;        /* 设置下边距 */
+    /*margin: 0 auto;*/
+}
+
+
+.main-content {
+    display: grid;              
+    grid-template-columns: minmax(600px, 40%) 1fr;  /* 左侧最小400px，最大占30% */
+    gap: 10px;                 
+    height: 70vh;              /* 使用视窗高度的95% */
+}
+
+
+.upload-section, .detection-section {
+    background: white;         /* 设置背景颜色 */
+    padding: 15px;             /* 四周留有15px内边距 */
+    border-radius: 8px;        /* 设置圆角 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 设置阴影 */   
+    display: flex;             /* 设置弹性布局 */
+    flex-direction: column;    /* 设置垂直方向排列 */
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 12vh 20px;        /* 使用视窗高度的12% */
+    text-align: center;        /* 设置文本居中 */
+    cursor: pointer;           /* 设置鼠标悬停时为手型 */
+    margin-bottom: 10px;       /* 设置下边距 */
+    background-color: #fafafa; /* 设置略微灰色的背景 */
+}
+
+.upload-text p {
+    font-size: 16px;            /* 设置字体大小 */
+    color: #333;              /* 设置字体颜色 */
+    margin: 5px 0;
+}
+
+.upload-text .sub-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.ground-truth-section {
+    margin-top: 5vh;           /* 使用视窗高度的8% */
+    padding-top: 20px;         
+    border-top: 1px solid #eee; 
+    flex-shrink: 0;           /* 防止压缩 */
+}
+
+
+.ground-truth-area {
+    height: 32.5vh;              /* 使用视窗高度的35% */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.detection-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;               /* 确保充满父容器高度 */
+    padding: 20px;              /* 内边距 */
+}
+
+.ratio-section {
+    flex: 4;                    /* 上方RATIO结果占4份 */
+    margin-bottom: 15px;        /* 与下方的间距 */
+}
+
+.other-models-section {
+    flex: 3;                    /* 下方两个模型结果占3份 */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;                  /* 两个模型之间的间距 */
+}
+
+.visualization-area, .ground-truth-area {
+    height: calc(100% - 3rem);
+    border: 2px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;    /* 添加相对定位 */
+}
+
+h2 {
+    color: #1a237e;
+    font-size: 24px;          /* 增大标题字体 */
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;          /* 增大按钮字体 */
+    margin: 14px 0;           /* 增加按钮上下间距 */
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.primary-btn:hover {
+    background-color: #283593;
+    transform: translateY(-1px); /* 悬停时轻微上浮 */
+    box-shadow: 0 2px 8px rgba(26,35,126,0.2);
+}
+
+.model-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.model-section h2 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.model-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.primary-btn:disabled {
+    background-color: #9fa8da;
+    cursor: not-allowed;
+}
+
+.params-panel {
+    margin-bottom: 20px;
+}
+
+.ratio-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.metric-image {
+    flex: 1;
+    text-align: center;
+}
+
+.metric-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.metric-image p {
+    margin-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.graph-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.graph-img:hover {
+    opacity: 0.9;
+}
+
+/* 添加指标样式 */
+.metrics {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.5);  /* 这里控制透明度 */
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", serif;
+}
+
+.metrics-table {
+    border-collapse: separate;
+    border-spacing: 8px 4px;
+}
+
+.metrics-table td {
+    font-size: 15px;
+    color: #333;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.metrics-table td:first-child {
+    text-align: right;
+    padding-right: 4px;
+}
+
+.metrics-table td:last-child {
+    text-align: left;
+    padding-left: 4px;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 50px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.modal-close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.function-description {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-radius: 4px;
+    border-left: 4px solid #1a237e;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.function-description p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: justify;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.upload-content {
+    width: 100%;
+    position: relative;
+}
+
+.file-info {
+    text-align: left;
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    margin: 10px 0;
+}
+
+.file-name {
+    font-weight: 500;
+    color: #1a237e;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.file-size {
+    color: #666;
+    font-size: 14px;
+}
+
+.delete-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.delete-btn:hover {
+    background: #ffebee;
+}
+
+/* 加载动画样式 */
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.loading-animation p {
+    margin-top: 15px;
+    color: #1a237e;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1a237e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
