@@ -21,15 +21,13 @@ AutoASD uses the following dependencies with Python 3.8
 
 ### Datasets
 
-- Two folders are used in the system, ETH-anomaly and ETH-scalability.
-- You can obtain the dataset from [1].
+- You can obtain the dataset from [1], which includes ETH-anomaly and ETH-scalability
 
 
 
 ### Preprocessing
 
-- You can refer [2] to preparing the datasets.
-- Or you can use this scripts directly.
+- You can use this scripts directly.
 
 ```
 python preprocessing.py
@@ -47,6 +45,4 @@ python app.py
 
 ### Reference
 
-[1]https://drive.google.com/drive/folders/1NKjzJS7w1dDqvwMm-lQcP3ryf3X8AfGx
-
-[2]https://github.com/tsourakakis-lab/antibenford-subgraphs/blob/main/eth_token_2018.ipynb
+[1] https://drive.google.com/drive/folders/1NKjzJS7w1dDqvwMm-lQcP3ryf3X8AfGx
