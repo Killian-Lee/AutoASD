@@ -21,7 +21,7 @@ AutoASD uses the following dependencies with Python 3.8
 
 ### Datasets
 
-- You can obtain the dataset from [1], which includes ETH-anomaly and ETH-scalability
+- You can obtain the dataset from [1], which includes ETH-anomaly and ETH-scalability.
 
 
 
